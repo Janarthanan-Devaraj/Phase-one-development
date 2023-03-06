@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block title %}Feeds{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="feeds">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <!------------------ MIDDLE --------------------->
+        <section class="middle">
+            <!------------------ STORIES --------------------->
+            <div class="stories">
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-8.jpg'%}" alt="Profile Image">
+                    </div>
+                    <p class="name">Your Story</p>
+                </div>
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-9.jpg' %}" alt="Profile Image">
+                    </div>
+                    <p class="name">Lilla James</p>
+                </div>
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-10.jpg' %}" alt="Profile Image">
+                    </div>
+                    <p class="name">Winnie Hale</p>
+                </div>
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-11.jpg'  %}" alt="Profile Image">
+                    </div>
+                    <p class="name">Daniel Bale</p>
+                </div>
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-12.jpg'  %}" alt="Profile Image">
+                    </div>
+                    <p class="name">Jane Doe</p>
+                </div>
+                <div class="story">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-7.jpg' %}" alt="Profile Image">
+                    </div>
+                    <p class="name">Tina White</p>
+                </div>
+            </div>
+            <!------------------ END OF STORIES --------------------->
+            <div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <form class="create-post" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-picture">
+                    <img src="{{user.profile_pic.url}}" alt="Profile Image">
+                </div>
+                {{form.caption}}
+                {{form.image}}
+                <input type="submit" value="Post" class="btn btn-primary">
+            </form>
+
+            <!------------------ FEEDS --------------------->
+            <div class="feeds">
+
+                {% for feed in feeds %}
+                <div class="feed">
+                    <div class="head">
+                        <div class="user">
+                            <div class="profile-picture">
+                                <img src="{{feed.author.profile_pic.url}}" alt="Profile Image">
+                            </div>
+                            <div class="ingo">
+                                <h3>{{feed.author.first_name}} {{feed.author.last_name}}</h3>
+                                <small>{{feed.author.username}}, {{ feed.pub_date|timesince }} ago</small>
+                            </div>
+                        </div>
+                        <span class="edit">
+                            <i class="uil uil-ellipsis-h"></i>
+                        </span>
+                    </div>
+
+                    <div class="photo">
+                        <img src="{{ feed.image.url }}" alt="Post">
+                    </div>
+
+                    <div class="action-buttons">
+                        <div class="interaction-button">
+                            <span><i class="uil uil-heart"></i></span>
+                            <span><i class="uil uil-comment-dots"></i></span>
+                            <span><i class="uil uil-share-alt"></i></span>
+                        </div>
+                        <div class="bookmark">
+                            <span><i class="uil uil-bookmark-full"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="liked-by">
+                        <span><img src="{% static 'images/feeds/profile-10.jpg' %}"></span>
+                        <span><img src="{% static 'images/feeds/profile-4.jpg' %}"></span>
+                        <span><img src="{% static 'images/feeds/profile-15.jpg' %}"></span>
+                        <p>Liked by <b>Ernest Achiever</b> and <b>2, 323 others</b></p>
+                    </div>
+
+                    <div class="caption">
+                        <p>{{feed.caption}}</p>
+                    </div>
+
+                    <div class="comments text-muted">View all 277 comments</div>
+                </div>
+                {% endfor %}
+                <!------------------ END OF FEEDS --------------------->
+        </section>
+        <!------------------ END OF MIDDLE --------------------->
+        <!------------------ RIGHT --------------------->
+        <section class="right">
+            <div class="messages">
+                <div class="heading">
+                    <h4>Messages</h4><i class="uil uil-edit"></i>
+                </div>
+                <!------------------ SEARCH BAR --------------------->
+                <div class="search-bar">
+                    <i class="uil uil-search"></i>
+                    <input type="search" placeholder="Search messages" id="message-search">
+                </div>
+                <!------------------ MESSAGES CATEGORY --------------------->
+                <div class="category">
+                    <h6 class="active">Primary</h6>
+                    <h6>General</h6>
+                    <h6 class="message-requests">Requests(7)</h6>
+                </div>
+                <!------------------ MESSAGE --------------------->
+                <div class="message">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-17.jpg' %}">
+                        <div class="active"></div>
+                    </div>
+                    <div class="message-body">
+                        <h5>Edem Quist</h5>
+                        <p class="text-muted">Just Woke up bruh</p>
+                    </div>
+                </div>
+                <!------------------ MESSAGE --------------------->
+                <div class="message">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-15.jpg' %}">
+                    </div>
+                    <div class="message-body">
+                        <h5>Daniella Jackson</h5>
+                        <p class="text-bold">2 new messages</p>
+                    </div>
+                </div>
+                <!------------------ MESSAGE --------------------->
+                <div class="message">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-9.jpg' %}">
+                    </div>
+                    <div class="message-body">
+                        <h5>Jane Doe</h5>
+                        <p class="text-muted">ok</p>
+                    </div>
+                </div>
+                <!------------------ MESSAGE --------------------->
+                <div class="message">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-19.jpg' %}">
+                    </div>
+                    <div class="message-body">
+                        <h5>Juliet Makarey</h5>
+                        <p class="text-muted">lol u right</p>
+                    </div>
+                </div>
+                <!------------------ MESSAGE --------------------->
+                <div class="message">
+                    <div class="profile-picture">
+                        <img src="{% static 'images/feeds/profile-7.jpg' %}">
+                        <div class="active"></div>
+                    </div>
+                    <div class="message-body">
+                        <h5>Chantel Msize</h5>
+                        <p class="text-bold">Birthday Tomorrow!</p>
+                    </div>
+                </div>
+            </div>
+            <!------------------ END OF MESSAGE --------------------->
+
+
+
+            <!------------------ FRIEND REQUESTS --------------------->
+            <div class="friend-requests">
+                <h4>Requests</h4>
+                <!------------------ REQUEST 1 --------------------->
+                <div class="request">
+                    <div class="info">
+                        <div class="profile-picture">
+                            <img src="{% static 'images/feeds/profile-14.jpg' %}">
+                        </div>
+                        <div>
+                            <h5>Hajia Bintu</h5>
+                            <p class="text-muted">
+                                8 mutual friends
+                            </p>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="btn btn-primary">
+                            Accept
+                        </button>
+                        <button class="btn">
+                            Decline
+                        </button>
+                    </div>
+                </div>
+                <!------------------ REQUEST 2 --------------------->
+                <div class="request">
+                    <div class="info">
+                        <div class="profile-picture">
+                            <img src="{% static 'images/feeds/profile-5.jpg' %}">
+                        </div>
+                        <div>
+                            <h5>Jackline Mensah</h5>
+                            <p class="text-muted">
+                                2 mutual friends
+                            </p>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="btn btn-primary">
+                            Accept
+                        </button>
+                        <button class="btn">
+                            Decline
+                        </button>
+                    </div>
+                </div>
+                <!------------------ REQUEST 3 --------------------->
+                <div class="request">
+                    <div class="info">
+                        <div class="profile-picture">
+                            <img src="{% static 'images/feeds/profile-16.jpg' %}">
+                        </div>
+                        <div>
+                            <h5>Jennifier Lawrence</h5>
+                            <p class="text-muted">
+                                19 mutual friends
+                            </p>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="btn btn-primary">
+                            Accept
+                        </button>
+                        <button class="btn">
+                            Decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!------------------ END OF RIGHT --------------------->
+    </div>
+</main>
+{% endblock content %}

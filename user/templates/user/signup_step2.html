@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Signup-Step 2{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+<main>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+
+      </div>
+      <div class="form-right">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="header" id="signup-header">
+          <h2>Step 2</h2>
+          <h4>Enter your Academic Details.</h4>
+        </div>
+        <div>
+          <form method="POST" class="signup-form">
+            {% csrf_token %}
+            <div class="input">
+              <label>{{form.roll_number.label}} <span>*</span></label>
+              {{form.roll_number}}
+              <p class="error-text">
+                {% for error in form.roll_number.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.degree.label}} <span>*</span></label>
+              {{form.degree}}
+              <p class="error-text">
+                {% for error in form.degree.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.department.label}} <span>*</span></label>
+              {{form.department}}
+              <p class="error-text">
+                {% for error in form.department.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+            <div class="name-field">
+              <div class="input">
+                <label>{{form.current_semester.label}} <span>*</span></label>
+                {{form.current_semester}}
+                <p class="error-text">
+                  {% for error in form.current_semester.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </p>
+                </p>
+              </div>
+              <div class="input">
+                <label>{{form.cgpa.label}} <span>*</span></label>
+                {{form.cgpa}}
+                <p class="error-text">
+                  {% for error in form.cgpa.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </p>
+                </p>
+              </div>
+            </div>
+            <div class="signup-btns">
+              <a class="btn btn-dark" href="{% url 'user:go-back-step-one'%}">Move to Previous Step</a>
+              <input class="btn btn-primary" id="next-btn" type="submit" value="Move to Next Step" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Signup-Step 3{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+<main>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+
+      </div>
+      <div class="form-right">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="header" id="signup-header">
+          <h2>Step 3</h2>
+          <h5>Enter your Company Details.</h5>
+        </div>
+        <div>
+          <form method="POST" class="signup-form">
+            {% csrf_token %}
+
+            <div class="input">
+              <label>{{form.company.label}} <span>*</span></label>
+              {{form.company}}
+              <p class="error-text">
+                {% for error in form.type.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.designation.label}} <span>*</span></label>
+              {{form.designation}}
+              <p class="error-text">
+                {% for error in form.type.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.location.label}} <span>*</span></label>
+              {{form.location}}
+              <p class="error-text">
+                {% for error in form.type.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.salary.label}} <span>*</span></label>
+              {{form.salary}}
+              <p class="error-text">
+                {% for error in form.type.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="signup-btns">
+              <a class="btn btn-dark" href="{% url 'user:go-back-step-two'%}">Move to Previous Step</a>
+              <input class="btn btn-success" id="next-btn" type="submit" value="Sign Up" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

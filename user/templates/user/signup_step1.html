@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Signup-Step 1{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+<main>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+
+      </div>
+      <div class="form-right">
+        <div class="header" id="signup-header">
+          <h2>Step 1</h2>
+          <h4>Enter your personal Information.</h4>
+        </div>
+        <div>
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <form method="POST" class="signup-form">
+            {% csrf_token %}
+            <div class="name-field">
+              <div class="input">
+                <label>{{form.first_name.label}} <span>*</span></label>
+                {{form.first_name}}
+                <p class="error-text">
+                  {% for error in form.first_name.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </p>
+                </p>
+              </div>
+              <div class="input">
+                <label>{{form.last_name.label}} <span>*</span></label>
+                {{form.last_name}}
+                <p class="error-text">
+                  {% for error in form.last_name.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </p>
+                </p>
+              </div>
+            </div>
+            <div class="input">
+              <label>{{form.username.label}} <span>*</span></label>
+              {{form.username}}
+              <p class="error-text">
+                {% for error in form.username.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.dob.label}} <span>*</span></label>
+              {{form.dob}}
+              <p class="error-text">
+                {% for error in form.dob.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.gender.label}} <span>*</span></label>
+              {{form.gender}}
+              <p class="error-text">
+                {% for error in form.gender.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+              </p>
+            </div>
+
+            <div class="signup-btns">
+              <a class="btn btn-dark" href="{% url 'user:go-back-step-zero'%}">Move to Previous Step</a>
+              <input class="btn btn-primary" id="next-btn" type="submit" value="Move to Next Step" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

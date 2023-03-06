@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Signup-Step 0{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+<main>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+
+      </div>
+      <div class="form-right">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="header" id="signup-header">
+          <h2>Sign up</h2>
+          <h4>Have an account? <span> <a href="{% url 'user:login' %}">Login</a></span></h4>
+        </div>
+        <div>
+          <form method="POST" class="signup-form">
+            {% csrf_token %}
+            <div class="column-field">
+              <div class="input">
+                <label>{{form.type.label}} <span>*</span></label>
+                {{form.type}}
+                <p class="error-text">
+                  {% for error in form.type.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </p>
+              </div>
+            </div>
+            <div class="input">
+              <label>{{form.email.label}} <span>*</span></label>
+              {{form.email}}
+              <p class="error-text">
+                {% for error in form.email.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.password1.label}} <span>*</span></label>
+              {{form.password1}}
+              <p class="error-text">
+                {% for error in form.password1.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="input">
+              <label>{{form.password2.label}} <span>*</span></label>
+              {{form.password2}}
+              <p class="error-text">
+                {% for error in form.password2.errors %}
+                {{ error }}
+                {% endfor %}
+              </p>
+            </div>
+            <div class="signup-next-btn">
+              <input class="btn btn-primary" id="next-btn" type="submit" value="Move to Next Step" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

@@ -12,11 +12,11 @@
     </a>
     <!------------------ SIDEBAR --------------------->
     <div class="sidebar">
-        <a href="{% url 'feeds:index' %}"class="menu-item{% if 'feeds' in request.resolver_match.namespace %} active{% endif %}">
+        <a href="{% url 'feeds:index' %}" class="menu-item{% if 'feeds' in request.resolver_match.namespace %} active{% endif %}">
             <span><i class="uil uil-home icon"></i></span>
             <h3>Feeds</h3>
         </a>
-        <a href="#" class="menu-item">
+        <a href="{% url 'forum:index' %} " class="menu-item{% if 'forum' in request.resolver_match.namespace %} active{% endif %}">
             <span><i class="uil uil-comment-question"></i></span>
             <h3>Q&A</h3>
         </a>

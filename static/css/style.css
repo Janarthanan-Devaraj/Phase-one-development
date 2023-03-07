@@ -157,11 +157,13 @@ main .container {
     position: relative;
 }
 
-.feeds .container {
+.feeds .container, .forum .container {
     display: grid;
     grid-template-columns: 18vw auto 20vw;
     column-gap: 2rem;
 }
+
+
 
 /* ========== LOGIN/REGISTRATION FORM GENERAL STYLE ========= */
 main .form-container {
@@ -472,8 +474,9 @@ main .form-container {
     border-radius: var(--input-button-radius);
     background: var(--color-white);
     color: var(--color-dark);
-    border: 2px solid var(--color-gray);
     font-weight: 500;
+    border: 2px solid var(--color-gray);
+    
 }
 
 .profile-bottom {
@@ -551,7 +554,8 @@ main .form-container {
 
 .profile #profile-cover-input {
     position: relative;
-    right: -79%;
+    margin-top: 10px;
+    right: -80%;
 }
 
 .profile .profile-info .academics-info-block {
@@ -562,15 +566,15 @@ main .form-container {
 
 .profile .profile-middle #profile-save {
     display: inline-block;
-    padding: .5rem 1rem;
-    margin-right: 1rem;
-    font-weight: bold;
-    width: 100%;
+    padding: .6rem 1.2rem;
+    position: relative;
     border-radius: var(--input-button-radius);
     background: var(--color-white);
     color: var(--color-dark);
+    margin-right: .8rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
     border: 2px solid var(--color-gray);
-    font-weight: 500;
 }
 
 

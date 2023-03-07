@@ -34,6 +34,7 @@ class AcademicsInfo(models.Model):
     ]
 
     DEPARTMENT_CHOICES = [
+        ('IT', 'Information Technology'),
         ('CSE', 'Computer Science and Engineering'),
         ('ECE', 'Electronics and Communication Engineering'),
         ('ME', 'Mechanical Engineering'),

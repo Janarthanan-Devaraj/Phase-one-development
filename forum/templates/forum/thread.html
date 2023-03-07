@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Q&A{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="thread">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <!------------------ MIDDLE --------------------->
+        <section class="middle">
+            <div href="{% url 'forum:thread' thread.id %}" class="thread-block">
+                <div class="thread-header">
+                    <div class="thread-question">
+                        <h2>{{thread.question}}</h2>
+                        <div class="thread-topic">
+                            {{thread.topic}}
+                        </div>
+                    </div>
+                    
+                    <div id="host-profile_pic">
+                        <img src="{{thread.host.profile_pic.url}}" alt="profile-image">
+                    </div>
+                </div>
+                <div class="thread-description">
+                    {{thread.description}}
+                </div>
+            </div>
+        </section>
+        <!------------------ END OF MIDDLE --------------------->
+        <!------------------ RIGHT --------------------->
+        <section class="right">
+        </section>
+        <!------------------ END OF RIGHT --------------------->
+    </div>
+</main>
+
+{% endblock %}

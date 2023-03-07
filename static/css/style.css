@@ -990,7 +990,126 @@ main .container .right {
     gap: 1rem;
 }
 
+/* ================ FORUM ================ */
 
+/* === FORUM LIST ===*/
+
+.forum .thread-block {
+    background: var(--color-white);
+    width: 100%;
+    display: block;
+    color: var(--color-dark);
+    height: max-content;
+    padding: 2rem;
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem;
+}
+
+
+.forum .thread-block .thread-host {
+    display: grid;
+    grid-template-columns: 4rem auto 40%;
+    position: relative;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.forum .thread-block #host-profile_pic {
+    width: 3rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.forum .thread-block #host-name-created {
+    font-size: .9rem;
+}
+
+.forum .thread-block .thread-topic {
+    background: hsl(252, 0%, 96%);
+    width: fit-content;
+    justify-self: end;
+    padding: .6rem 2rem;
+    color: var(--color-primary);
+    border-radius: var(--input-button-radius);
+}
+
+/* === THREAD ===*/
+
+.thread .container {
+    display: grid;
+    grid-template-columns: 18vw 50vw 10vw;
+    column-gap: 2rem;
+}
+
+.thread .thread-block {
+    background: var(--color-white);
+    width: 100%;
+    color: var(--color-dark);
+    height: max-content;
+    padding: 2rem 1rem;
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem;
+}
+
+.thread .thread-block .thread-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    width: 95%;
+    justify-content: space-between;
+}
+
+.thread .thread-block .thread-question {
+    display: flex;
+}
+
+.thread .thread-block .thread-question .thread-topic {
+    margin-left: 1rem;
+    display: inline-block;
+    height: fit-content;
+}
+
+.thread .thread-block #host-profile_pic{
+    margin-left: 1rem;
+}
+
+.thread .thread-block .thread-description {
+    margin: 1rem;
+    width: 85%;
+}
+
+.thread .thread-block .thread-host {
+    display: grid;
+    position: relative;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.thread .thread-block #host-profile_pic {
+    width: 3rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.thread .thread-block #host-name-created {
+    font-size: .9rem;
+}
+
+.thread .thread-block .thread-topic {
+    background: hsl(252, 0%, 96%);
+    width: fit-content;
+    justify-self: end;
+    padding: .6rem 2rem;
+    color: var(--color-primary);
+    border-radius: var(--input-button-radius);
+}
 
 /* ========== THEME CUSTOMIZATION ========= */
 

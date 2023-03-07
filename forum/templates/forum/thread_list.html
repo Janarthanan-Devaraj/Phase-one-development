@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Q&A{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="forum ">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <!------------------ MIDDLE --------------------->
+        <section class="middle">
+            {% for thread in thread_list %}
+            <a href="{% url 'forum:thread' thread.id %}" class="thread-block">
+                <div class="thread-question">
+                    <h2>{{thread.question}}</h2>
+                </div>
+                <div class="thread-host">
+                    <div id="host-profile_pic">
+                        <img src="{{thread.host.profile_pic.url}}" alt="profile-image">
+                    </div>
+                    <div id="host-name-created">
+                        <div id="host-name">
+                            <p>{{thread.host.first_name}} {{thread.host.last_name}}</p>
+                        </div>
+                        <div class="text-muted">
+                            <p>{{thread.created|timesince}} ago</p>
+                        </div>
+                    </div>
+                    <div class="thread-topic">
+                        {{thread.topic}}
+                    </div>
+                </div>
+                <div class="thread-description">
+                    {{thread.description}}
+                </div>
+            </a>
+            {% endfor%}
+        </section>
+        <!------------------ END OF MIDDLE --------------------->
+        <!------------------ RIGHT --------------------->
+        <section class="right">
+        </section>
+        <!------------------ END OF RIGHT --------------------->
+    </div>
+</main>
+<script src="{% static 'js/message.js'%}"></script>
+{% endblock content %}

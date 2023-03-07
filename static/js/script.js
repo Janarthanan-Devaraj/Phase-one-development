@@ -64,6 +64,7 @@ themeModel.addEventListener("click", closeThemeModal);
 theme.addEventListener("click", openThemeModel);
 
 
+
 // ================== FONTS ====================
 
 // remove active class from spans or font size selectors
@@ -140,7 +141,6 @@ colorPalette.forEach(color => {
             primaryHue = 202;
         }
         color.classList.add('active');
-
         root.style.setProperty('--primary-color-hue', primaryHue)
 
     })
@@ -199,3 +199,4 @@ Bg3.addEventListener('click', () => {
 });
 
 // END
+

@@ -11,13 +11,13 @@ class FeedForm(forms.ModelForm):
             
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['image'].widget.attrs.update({'class': 'create-post'})
+        self.fields['image'].widget.attrs.update({'id': 'post-img'})
 
     class Meta:
         model = Feed
         fields = ( 'caption', 'image',)
         widgets = {
-            'caption': forms.TextInput(attrs={'id':'create-post', 'placeholder':'What\'s on your mind, Diana?'}),
+            'caption': forms.TextInput(attrs={'id':'post-caption', 'placeholder':'What\'s on your mind, Diana?'}),
         }
 
         

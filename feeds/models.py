@@ -12,3 +12,4 @@ class Feed(models.Model):
     likes = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)
+

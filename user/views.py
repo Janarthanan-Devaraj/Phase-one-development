@@ -191,9 +191,9 @@ def editProfile(request):
             form_companyInfo.save()
             
 
-            return redirect('accounts:profile', pk = user.username)
+            return redirect('user:profile', pk = user.email)
     
-    context = {'form1': form1, 'form2': form2, 'form3' : form3 }
-    return render(request, 'accounts/edit-profile.html', context)
+    context = {'user':user, 'form1': form1, 'form2': form2, 'form3' : form3 }
+    return render(request, 'user/edit-profile.html', context)
 
 

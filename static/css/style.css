@@ -542,6 +542,37 @@ main .form-container {
     justify-self: start;
 }
 
+/* ========== EDIT PROFILE ========= */
+.profile .container {
+    display: grid;
+    grid-template-columns: 18vw auto;
+    column-gap: 2rem;
+}
+
+.profile #profile-cover-input {
+    position: relative;
+    right: -79%;
+}
+
+.profile .profile-info .academics-info-block {
+    position: relative;
+    left: -10%;
+    padding-left: 0;
+}
+
+.profile .profile-middle #profile-save {
+    display: inline-block;
+    padding: .5rem 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+    width: 100%;
+    border-radius: var(--input-button-radius);
+    background: var(--color-white);
+    color: var(--color-dark);
+    border: 2px solid var(--color-gray);
+    font-weight: 500;
+}
+
 
 /* ========== LEFT ========= */
 main .container .left {

@@ -1,3 +1,78 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
 
-{% block title %}Edit Profile{% endblock title %}
+{% block title %}Profile{% endblock title %}
+
+{% load static %}
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="profile">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <section class="container-profile">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-header">
+                    <div class="profile-top">
+                        <img id="profile-cover" src="{{user.profile_cover.url}}" alt="profile-cover-img">
+                        {{form1.profile_cover}}
+                    </div>
+                    <div class="profile-middle">
+                        <div class="profile-img">
+                            <img src="{{user.profile_pic.url}}" alt="profile-image">
+                            {{form1.profile_pic}}
+                        </div>
+                        
+                        <div class="right-buttons">
+                            <input type="submit" value="Save profile" class="edit-profile-button" ></input>
+                        </div>
+                    </div>
+                    <div class="profile-bottom">
+                        <div class="profile-bio">
+                            <h2>{{user.first_name}} {{user.last_name}}</h2>
+                            <p><span>@{{user.username}}</span><span class="text-muted dot"> .
+                                </span>{{company.designation}}
+                                <span>at</span> {{company.company}}<span class="text-muted dot"> . </span> <span
+                                    class="text-muted">FULL TIME</span>
+                            </p>
+                        </div>
+                        <div class="profile-bottom-buttons">
+                            <a href="#" id="message-button">
+                                Message
+                            </a>
+                            <a href="#" class="btn-primary">
+                                <i class="uil uil-share"></i> Share Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div class="block">
+                        <h2>Personal Info</h2>
+                        <p>First Name <span>: {{form1.first_name}}</span></p>
+                        <p>Last Name <span>: {{form1.last_name}}</span></p>
+                        <p>username <span>: {{form1.username}}</span></p>
+                        <p>Date of Birth <span>: {{form1.dob}}</span></p>
+                        <p>Gender <span>: {{form1.gender}}</span></p>
+                        <p>Email <span>: {{form1.email}}</span></p>
+                    </div>
+                    <div class="block academics-info-block">
+                        <h2>Academics Info</h2>
+                        <p>Roll Number <span>: {{form2.roll_number}}</span></p>
+                        <p>Degree <span>: {{form2.degree}}</span></p>
+                        <p>Branch <span>: {{form2.department}}</span></p>
+                        <p>Current Semester <span>: {{form2.current_semester}}</span></p>
+                        <p>CGPA<span>: {{form2.cgpa}}</span></p>
+                    </div>
+                    <div class="block">
+                        <h2>Company</h2>
+                        <p>Company Name <span>: {{form3.company}}</span></p>
+                        <p>Designation<span>: {{form3.designation}}</span></p>
+                        <p>Location <span>: {{form3.location}}</span></p>
+                        <p>Salary <span>: {{form3.salary}}</span></p>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+{% endblock content %}

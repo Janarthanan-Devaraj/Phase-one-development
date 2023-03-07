@@ -69,5 +69,7 @@ class EditUserProfile(ModelForm):
         model = User
         fields = ['profile_pic', 'profile_cover', 'first_name', 'last_name','username', 'email', 'dob', 'gender']
         widgets = {
-            'dob':  forms.DateInput(attrs={'type': 'date'})
+            'dob':  forms.DateInput(attrs={'type': 'date'}),
+            'profile_pic': forms.FileInput(attrs={'class':'file-input'}),
+            'profile_cover': forms.FileInput(attrs={'class':'file-input', 'id' :'profile-cover-input'}),
         }

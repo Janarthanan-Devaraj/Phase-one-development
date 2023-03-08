@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Q&A{% endblock title %}
@@ -12,22 +11,64 @@
         {% include 'side-nav.html'%}
         <!------------------ MIDDLE --------------------->
         <section class="middle">
-            <div href="{% url 'forum:thread' thread.id %}" class="thread-block">
-                <div class="thread-header">
-                    <div class="thread-question">
-                        <h2>{{thread.question}}</h2>
-                        <div class="thread-topic">
-                            {{thread.topic}}
+            <div class="thread-container">
+                <div class="thread-block">
+                    <div class="thread-header">
+                        <div class="thread-question">
+                            <h2>{{thread.question}}</h2>
+                            <div class="thread-topic">
+                                {{thread.topic}}
+                            </div>
+                        </div>
+                        <div id="host-profile_pic">
+                            <img src="{{thread.host.profile_pic.url}}" alt="profile-image">
                         </div>
                     </div>
-                    
-                    <div id="host-profile_pic">
-                        <img src="{{thread.host.profile_pic.url}}" alt="profile-image">
+                    <div class="thread-description">
+                        {{thread.description}}
+                    </div>
+                    <div class="responded-by liked-by">
+                        {% for participant in participants %}
+                        <span><img src="{{ participant.profile_pic.url}}"></span>
+                        {% endfor %}
+                        <p>+ {{participants.count}} more</p>
                     </div>
                 </div>
-                <div class="thread-description">
-                    {{thread.description}}
+                <div class="thread-responses">
+                    <h3>Responses:</h3>
+                    {% for response in thread_responses %}
+                    <div class="responder-block">
+                        <div class="response-header">
+                            <div class="responder-info">
+                                <img class="responder-profile-img" src="{{response.responder.profile_pic.url}}"
+                                    alt="profile-image">
+                                <p class="responder-name">{{response.responder.first_name}} {{response.responder.last_name}}
+                                </p>
+                            </div>
+                            <p class="response-time text-muted">{{response.created|timesince}} ago</p>
+                        </div>
+                        <div class="response-body">
+                            {{response.body}}
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+            
+            </div>
+            <div class="response-message">
+                {% if request.user.is_authenticated %}
+                <div class="message">
+                    <form action="" method="POST"> 
+                    {% csrf_token %}
+                    <textarea name="body" placeholder="Write your message here..." cols="30" rows="8"></textarea>
+                    <div>
+                        <button class="response-submit-btn" type="submit">
+                            <i class="uil uil-message"></i>
+                        </button>
+                    </div>
+                    </form>
                 </div>
+                {% endif %}
             </div>
         </section>
         <!------------------ END OF MIDDLE --------------------->

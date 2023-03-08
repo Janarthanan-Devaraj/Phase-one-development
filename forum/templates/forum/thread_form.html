@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Q&A{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="thread-form">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <form class="form" method="post" action="">
+            {% csrf_token %}
+            <div class="input">
+                <label>{{form.question.label}}<span>*</span></label>
+                {{form.question}}
+            </div>
+            <div class="input">
+                <label>{{form.topic.label}}<span>*</span></label>
+                {{form.topic}}
+            </div>
+            <div class="input">
+                <label>{{form.description.label}}<span>*</span></label>
+                {{form.description}}
+            </div>
+            <input type="submit" class="btn btn-primary form-create-btn" value="Create">
+        </form>
+    </div>
+</main>
+{% endblock content %}

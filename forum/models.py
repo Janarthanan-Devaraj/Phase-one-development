@@ -7,7 +7,7 @@ class Thread(models.Model):
     question = models.CharField(max_length=200)
     topic = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    participants = models.ManyToManyField(
+    participant = models.ManyToManyField(
         User, related_name='participants', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -19,7 +19,7 @@ class Thread(models.Model):
     
 
 class Responses(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    responder = models.ForeignKey(User, on_delete=models.CASCADE)
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

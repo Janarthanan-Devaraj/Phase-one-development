@@ -14,15 +14,15 @@ def thread_list(request):
 def thread(request, pk):
     thread = Thread.objects.get(id=pk)
     thread_responses = thread.responses_set.all()
-    participants = thread.participants.all()
+    participants = thread.participant.all()[0:3]
     if request.method == 'POST':
         response = Responses.objects.create(
-            user = request.user,
+            responder = request.user,
             thread = thread,
             body = request.POST.get('body')
         )
-        thread.participants.add(request.user)
-        return redirect('thread', pk = thread.id)
+        thread.participant.add(request.user)
+        return redirect('forum:thread', pk = thread.id)
     
     context = {'thread' : thread, 'thread_responses' : thread_responses, 'participants' : participants}
 
@@ -37,10 +37,9 @@ def createThread(request):
             host=request.user,
             question=request.POST.get('question'),
             topic=request.POST.get('topic'),
-            name=request.POST.get('name'),
             description=request.POST.get('description'),
         )
-        return redirect('forum:forum_list')
+        return redirect('forum:thread_list')
 
     context = {'form': form}
     return render(request, 'forum/thread_form.html', context)

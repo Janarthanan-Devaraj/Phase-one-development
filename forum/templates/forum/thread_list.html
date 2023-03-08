@@ -11,6 +11,9 @@
         {% include 'side-nav.html'%}
         <!------------------ MIDDLE --------------------->
         <section class="middle">
+            <div id="thread-form-btn">
+                <a  href="{% url 'forum:create-thread' %}">Create a Thread</a>
+            </div>
             {% for thread in thread_list %}
             <a href="{% url 'forum:thread' thread.id %}" class="thread-block">
                 <div class="thread-question">
@@ -45,5 +48,4 @@
         <!------------------ END OF RIGHT --------------------->
     </div>
 </main>
-<script src="{% static 'js/message.js'%}"></script>
 {% endblock content %}

@@ -11,45 +11,6 @@
         {% include 'side-nav.html'%}
         <!------------------ MIDDLE --------------------->
         <section class="middle">
-            <!------------------ STORIES --------------------->
-            <div class="stories">
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-8.jpg'%}" alt="Profile Image">
-                    </div>
-                    <p class="name">Your Story</p>
-                </div>
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-9.jpg' %}" alt="Profile Image">
-                    </div>
-                    <p class="name">Lilla James</p>
-                </div>
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-10.jpg' %}" alt="Profile Image">
-                    </div>
-                    <p class="name">Winnie Hale</p>
-                </div>
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-11.jpg'  %}" alt="Profile Image">
-                    </div>
-                    <p class="name">Daniel Bale</p>
-                </div>
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-12.jpg'  %}" alt="Profile Image">
-                    </div>
-                    <p class="name">Jane Doe</p>
-                </div>
-                <div class="story">
-                    <div class="profile-picture">
-                        <img src="{% static 'images/feeds/profile-7.jpg' %}" alt="Profile Image">
-                    </div>
-                    <p class="name">Tina White</p>
-                </div>
-            </div>
             <!------------------ END OF STORIES --------------------->
             <div>
                 {% if messages %}
@@ -60,14 +21,20 @@
                 </ul>
                 {% endif %}
             </div>
-            <form class="create-post" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="profile-picture">
-                    <img src="{{user.profile_pic.url}}" alt="Profile Image">
+                <div class="create-post">
+                    <div class="profile-picture">
+                        <img src="{{user.profile_pic.url}}" alt="Profile Image">
+                    </div>
+                    <div>
+                        <textarea placeholder="What's on your mind?..." name="caption" cols="30" rows="10"></textarea>
+                    </div>
+                    <div>
+                        {{form.image}}
+                    </div>
                 </div>
-                {{form.caption}}
-                {{form.image}}
-                <input type="submit" value="Post" class="btn btn-primary">
+                <input type="submit" value="Post" class="btn btn-primary post-create-btn">
             </form>
 
             <!------------------ FEEDS --------------------->

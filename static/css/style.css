@@ -143,6 +143,7 @@ nav .create {
     align-items: center;
     gap: 2rem;
 }
+
 .icon-font-size {
     font-size: 1.5rem;
     color: var(--color-gray);
@@ -687,6 +688,7 @@ main .container .left .profile {
     padding: var(--card-padding);
     box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
     display: none;
+    z-index: 2;
 }
 
 .left .notifications-popup::before {
@@ -790,7 +792,8 @@ main .container .left .profile {
 }  
 .middle .create-post {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 5% 65% 30%;
     align-items: center;
     margin-top: 1rem;
     background: var(--color-white);
@@ -798,27 +801,46 @@ main .container .left .profile {
     border-radius: var(--border-radius);
 }
 
-.middle .create-post input[type='text'] {
+.middle .create-post textarea {
     justify-self: start;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
     width: 100%;
-    height: 5rem;
+    height: 6rem;
+    font-size: 1rem;
     padding-left: 1rem;
     background: transparent;
     color: var(--color-black);
     margin-right: 1rem;
 }
 
-.middle .create-post #post-img {
-    justify-self: end;
+.middle .create-post textarea::placeholder {
+    font-size: 1rem;
+    padding-top: 2rem;
 }
 
+.middle .create-post #post-img {
+    margin-bottom: 1rem;
+    position: relative;
+    right: -10%;
+}
+
+.middle .post-create-btn {
+    padding: .5rem 2rem;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    right: -80%;
+    margin-top: 1rem;
+}
 /* ========== FEEDS ========= */
+
 .middle .feeds .feed {
     background: var(--color-white);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     margin: 1rem 0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.5;
 }
 
@@ -963,6 +985,7 @@ main .container .right {
 
 
 /* ========== FRIEND REQUEST ========= */
+
 .right .friend-requests {
     margin-top: 1rem;
 }
@@ -994,22 +1017,43 @@ main .container .right {
 
 /* === FORUM LIST ===*/
 
+.forum .container {
+    display: grid;
+    grid-template-columns: 18vw 45vw 10vw;
+    column-gap: 2rem;
+}
+
 .forum .thread-block {
     background: var(--color-white);
     width: 100%;
     display: block;
     color: var(--color-dark);
     height: max-content;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: var(--card-border-radius);
     margin-top: 2rem;
 }
 
+.forum #thread-form-btn {
+   width: 100%;
+   position: relative;
+}
+
+.forum #thread-form-btn a {
+    display: inline-block;
+    position: relative;
+    right: -77%;
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    justify-content: end;
+    color: var(--color-white);
+    background: var(--color-primary);
+}
 
 .forum .thread-block .thread-host {
     display: grid;
     grid-template-columns: 4rem auto 40%;
-    position: relative;
     align-items: center;
     margin: 1rem 0;
 }
@@ -1036,12 +1080,69 @@ main .container .right {
     border-radius: var(--input-button-radius);
 }
 
+/* === THREAD CREATION FORM ===*/
+
+.thread-form .container {
+    display: grid;
+    grid-template-columns: 18vw 50vw;
+    column-gap: 2rem;
+}
+
+.thread-form .form {
+    width: 100%;
+    height: max-content;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+}
+
+.thread-form .form .input {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 1rem;
+}
+
+.thread-form .form label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.thread-form .form input:not([type="submit"]) {
+    height: 2.5rem;
+    
+}
+
+.thread-form .form input:not([type="submit"]), .thread-form .form textarea {
+    border: 1px solid var(--color-gray);
+    width: 80%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-create-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    position: relative;
+    right: -84%;
+    font-family: 'Poppins', sans-serif;
+    border-radius: var(--border-radius);
+}
+
 /* === THREAD ===*/
 
 .thread .container {
     display: grid;
-    grid-template-columns: 18vw 50vw 10vw;
-    column-gap: 2rem;
+    grid-template-columns: 18vw 55vw 10vw;
+    column-gap: 2.5rem;
+}
+
+.thread .thread-container {
+    border-radius: var(--card-border-radius);
+}
+
+.thread .thread-container hr {
+    border: 1px solid hsl(252, 0%, 80%);
+    width: 90%;
+    margin: 1rem auto;
 }
 
 .thread .thread-block {
@@ -1049,15 +1150,22 @@ main .container .right {
     width: 100%;
     color: var(--color-dark);
     height: max-content;
-    padding: 2rem 1rem;
+    padding: 2rem;
     border-radius: var(--card-border-radius);
-    margin-top: 2rem;
+    margin: 2rem 0;
+}
+
+.thread .thread-block .responded-by {
+    position: relative;
+    right: -84%;
 }
 
 .thread .thread-block .thread-header {
     display: flex;
+    background: var(--color-white);
     align-items: center;
     position: relative;
+    align-items: center;
     padding: 1rem;
     width: 95%;
     justify-content: space-between;
@@ -1065,12 +1173,6 @@ main .container .right {
 
 .thread .thread-block .thread-question {
     display: flex;
-}
-
-.thread .thread-block .thread-question .thread-topic {
-    margin-left: 1rem;
-    display: inline-block;
-    height: fit-content;
 }
 
 .thread .thread-block #host-profile_pic{
@@ -1104,11 +1206,102 @@ main .container .right {
 
 .thread .thread-block .thread-topic {
     background: hsl(252, 0%, 96%);
+    height: fit-content;
     width: fit-content;
-    justify-self: end;
+    margin-left: 1rem;
     padding: .6rem 2rem;
     color: var(--color-primary);
     border-radius: var(--input-button-radius);
+}
+
+/* ===== RESPONSE ==== */
+
+.responder-block {
+    background: var(--color-white);
+    width: 100%;
+    color: var(--color-dark);
+    height: max-content;
+    padding: 2rem 1rem;
+    border-radius: var(--card-border-radius);
+    margin: 2rem auto;
+
+}
+
+
+.responder-block .response-header{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    width: 95%;
+    justify-content: space-between;
+}
+
+.responder-block .response-header .responder-info {
+    display: flex;
+    align-items: center;
+}
+
+.responder-block .response-header .responder-profile-img {
+    width: 3rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.responder-block .response-header .responder-name {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.responder-block .response-body {
+    padding: 0 2rem 0 4.7rem;
+}
+
+.response-message {
+    display: block;
+    width: 100%;
+    height: 6.5rem;
+    background: var(--color-white);
+    margin: 3rem 0;
+    border-radius: var(--card-border-radius);
+    position: relative;
+    align-items: center;
+}
+
+.response-message .message form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.response-message .message textarea{
+    width: 85%;
+    background: hsl(252, 0%, 96%);
+    height: 4.5rem;
+    font-size: .8rem;
+    border-radius: var(--card-border-radius);
+    margin: 1rem 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+}
+
+.response-message .response-submit-btn {
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    left: -15%;
+    font-size: 1.8rem;
+    color: var(--color-white);
+    background: var(--color-primary);
 }
 
 /* ========== THEME CUSTOMIZATION ========= */

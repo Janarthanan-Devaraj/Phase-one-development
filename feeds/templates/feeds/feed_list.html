@@ -3,6 +3,7 @@
 {% block title %}Feeds{% endblock title %}
 
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 {% include 'top-nav.html' %}
@@ -32,9 +33,9 @@
                     </div>
                     <div>
                         {{form.image}}
+                        <input type="submit" value="Post" class="btn btn-primary post-create-btn">
                     </div>
                 </div>
-                <input type="submit" value="Post" class="btn btn-primary post-create-btn">
             </form>
 
             <!------------------ FEEDS --------------------->
@@ -49,21 +50,28 @@
                             </div>
                             <div class="ingo">
                                 <h3>{{feed.author.first_name}} {{feed.author.last_name}}</h3>
-                                <small>{{feed.author.username}}, {{ feed.pub_date|timesince }} ago</small>
+                                <small>{{feed.author.username}}, {{ feed.pub_date|naturaltime}}</small>
                             </div>
                         </div>
                         <span class="edit">
                             <i class="uil uil-ellipsis-h"></i>
                         </span>
                     </div>
-
                     <div class="photo">
                         <img src="{{ feed.image.url }}" alt="Post">
                     </div>
 
                     <div class="action-buttons">
                         <div class="interaction-button">
-                            <span><i class="uil uil-heart"></i></span>
+                            <span>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                                    <button type="submit" name="like">
+                                        <i class="uil uil-heart"></i> {{ post.likes }}
+                                    </button>
+                                </form>
+                            </span>
                             <span><i class="uil uil-comment-dots"></i></span>
                             <span><i class="uil uil-share-alt"></i></span>
                         </div>
@@ -78,14 +86,15 @@
                         <span><img src="{% static 'images/feeds/profile-15.jpg' %}"></span>
                         <p>Liked by <b>Ernest Achiever</b> and <b>2, 323 others</b></p>
                     </div>
-
                     <div class="caption">
                         <p>{{feed.caption}}</p>
                     </div>
 
                     <div class="comments text-muted">View all 277 comments</div>
                 </div>
-                {% endfor %}
+                {% empty %}
+            <li>No blogs have been posted yet</li>
+        {% endfor %}   
                 <!------------------ END OF FEEDS --------------------->
         </section>
         <!------------------ END OF MIDDLE --------------------->

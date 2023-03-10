@@ -3,7 +3,7 @@ from user.models import User
 from django.db import models
 
 class Thread(models.Model):
-    host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    host = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     question = models.CharField(max_length=200)
     topic = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)

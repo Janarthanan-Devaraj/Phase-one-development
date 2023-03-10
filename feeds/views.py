@@ -16,7 +16,8 @@ def feed_list(request):
             return redirect('feeds:index')
         
         else:
-            messages.error(request, 'An error occurred during registration')
+            messages.error(request, 'Unable to upload the Post')
+
     feeds = Feed.objects.all().order_by('-pub_date')
 
     context=  {'form': form, 'feeds': feeds}

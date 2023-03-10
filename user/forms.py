@@ -72,4 +72,4 @@ class EditUserProfile(ModelForm):
             'dob':  forms.DateInput(attrs={'type': 'date'}),
             'profile_pic': forms.FileInput(attrs={'class':'file-input'}),
             'profile_cover': forms.FileInput(attrs={'class':'file-input', 'id' :'profile-cover-input'}),
-        }
+        },

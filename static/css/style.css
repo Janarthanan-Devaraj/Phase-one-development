@@ -522,7 +522,7 @@ main .form-container {
     font-weight: 500;
 }
 
-.profile-info{
+.profile-info {
     width: 100%;
     background: var(--color-white);
     border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
@@ -531,15 +531,15 @@ main .form-container {
     justify-content: space-around;
 }
 
-.block{
+.block {
     padding: 3rem;
 }
 
-.block h2{
+.block h2 {
     margin-bottom: 1.5rem;
 }
 
-.block p{
+.block p {
     margin: .5rem 1rem;
     display: grid;
     grid-template-columns: 40% auto;
@@ -821,6 +821,7 @@ main .container .left .profile {
 
 .middle .create-post #post-img {
     margin-bottom: 1rem;
+    padding-top: 1rem;
     position: relative;
     right: -10%;
 }
@@ -829,10 +830,10 @@ main .container .left .profile {
     padding: .5rem 2rem;
     position: relative;
     font-family: 'Poppins', sans-serif;
+    margin-left: 6rem;
     font-size: 1rem;
-    right: -80%;
-    margin-top: 1rem;
 }
+
 /* ========== FEEDS ========= */
 
 .middle .feeds .feed {

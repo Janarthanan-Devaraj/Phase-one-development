@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Feeds{% endblock title %}
+
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="notes">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <!------------------ MIDDLE --------------------->
+        <section class="middle">
+            <h2>{{ department }} - Semester {{ semester }}</h2>
+            {% if notes %}
+            <ul>
+                {% for note in notes %}
+                <li>Subject - {{ note.subject }} </li>
+                <li>Unit - {{ note.unit }} </li>
+                <li><a href="{{ note.pdf.url }}">{{note.pdf}}</a></li>
+                {% empty %}
+                <li>No notes found.</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No notes found.</p>
+            {% endif %}
+        </section>
+        <!------------------ END OF MIDDLE --------------------->
+        <!------------------ RIGHT --------------------->
+        <section class="right">
+
+        </section>
+        <!------------------ END OF RIGHT --------------------->
+    </div>
+</main>
+{% endblock content %}

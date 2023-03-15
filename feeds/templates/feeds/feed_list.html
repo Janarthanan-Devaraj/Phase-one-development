@@ -63,15 +63,7 @@
 
                     <div class="action-buttons">
                         <div class="interaction-button">
-                            <span>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="post_id" value="{{ post.id }}">
-                                    <button type="submit" name="like">
-                                        <i class="uil uil-heart"></i> {{ post.likes }}
-                                    </button>
-                                </form>
-                            </span>
+                            <span><i class="uil uil-heart"></i> {{ post.likes }}</span>
                             <span><i class="uil uil-comment-dots"></i></span>
                             <span><i class="uil uil-share-alt"></i></span>
                         </div>

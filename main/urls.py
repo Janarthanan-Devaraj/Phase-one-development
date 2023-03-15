@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include(('user.urls', 'user'), namespace='user')),
     path('feeds/', include(('feeds.urls', 'feeds'), namespace='feeds')),
     path('forum/', include(('forum.urls', 'forum'), namespace='forum')),
+    path('notes/', include(('notes.urls', 'notes'), namespace='notes')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'user',
     'feeds',
     'forum',
+    'notes',
 ]
 
 MIDDLEWARE = [

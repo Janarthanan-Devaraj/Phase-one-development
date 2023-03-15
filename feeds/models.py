@@ -8,7 +8,7 @@ class Feed(models.Model):
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     caption = models.TextField()
     image = models.ImageField(upload_to='posts', blank=True, null=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)

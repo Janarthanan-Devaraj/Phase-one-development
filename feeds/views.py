@@ -18,7 +18,7 @@ def feed_list(request):
         else:
             messages.error(request, 'Unable to upload the Post')
 
-    feeds = Feed.objects.all().order_by('-pub_date')
+    feeds = Feed.objects.all().order_by('-created')
 
     context=  {'form': form, 'feeds': feeds}
     return render(request, 'feeds/feed_list.html', context)

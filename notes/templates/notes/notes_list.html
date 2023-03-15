@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Feeds{% endblock title %}
+
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="notes">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <!------------------ MIDDLE --------------------->
+        <section class="middle">
+            <div id="notes-form-btn">
+                <a href="{% url 'notes:create-notes' %}">Create a Thread</a>
+            </div>
+            <div>
+                {% for department, semesters in data.items %}
+                <h2>{{ department }}</h2>
+                {% if semesters %}
+                {% for semester, notes in semesters.items %}
+                <h3><a href="{% url 'notes:notes_by_semester' department.id semester.id %}">Semester {{ semester }}</a></h3>
+                {% empty %}
+                <p>No semesters found for this department.</p>
+                {% endfor %}
+                {% else %}
+                <p>No notes found for this department.</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <!------------------ END OF MIDDLE --------------------->
+        <!------------------ RIGHT --------------------->
+        <section class="right">
+
+        </section>
+        <!------------------ END OF RIGHT --------------------->
+    </div>
+</main>
+{% endblock content %}

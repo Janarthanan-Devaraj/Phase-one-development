@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Notes{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% include 'top-nav.html' %}
+<main class="notes-form">
+    <div class="container">
+        {% include 'side-nav.html'%}
+        <form class="form" method="post" enctype="multipart/form-data">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            {% csrf_token %}
+            <div class="input">
+                <label>Semester<span>*</span></label>
+                {{form.semester_num}}
+            </div>
+            <div class="input">
+                <label>{{form.subject.label}}<span>*</span></label>
+                {{form.subject}}
+            </div>
+            <div class="input">
+                <label>{{form.unit.label}}<span>*</span></label>
+                {{form.unit}}
+            </div>
+            <div class="input">
+                <label>{{form.pdf.label}}<span>*</span></label>
+                {{form.pdf}}
+            </div>
+            <input type="submit" class="btn btn-primary form-create-btn" value="Upload">
+        </form>
+    </div>
+</main>
+{% endblock content %}

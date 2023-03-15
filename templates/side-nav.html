@@ -86,7 +86,7 @@
             <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span>
             <h3>Message</h3>
         </a>
-        <a href="#" class="menu-item">
+        <a href="{% url 'notes:index' %} " class="menu-item{% if 'notes' in request.resolver_match.namespace %} active{% endif %}">
             <span><i class="uil uil-notebooks"></i></span>
             <h3>Notes</h3>
         </a>
